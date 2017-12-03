@@ -6,6 +6,8 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using Config;
+
     public static class Utils
     {
         public static string NextTo(this string[] str, string pat)
@@ -50,8 +52,10 @@
             var client = new HttpClient();
             //client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "291131ee5c274fb78a00797c16af69bc");
             // Across all Bing Search APIs (Web, Image, Video, News): 1,000 transactions per month, 5 per second. Trial keys expire after a 90 day period, after which a subscription may be purchased on the Azure portal.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "dd3ca2ab17de4174b6e558e845da901a");
-            var uri = $"https://api.cognitive.microsoft.com/bing/v5.0/images/search?count={count}&q={query}";
+            //            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "dd3ca2ab17de4174b6e558e845da901a");
+            //            var uri = $"https://api.cognitive.microsoft.com/bing/v5.0/images/search?count={count}&q={query}";
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Config.BingSearchApiKey);
+            var uri = $"https://api.cognitive.microsoft.com/bing/v7.0/images/search?count={count}&q={query}";
             var response = await client.GetStringAsync(uri);
             dynamic x = Newtonsoft.Json.JsonConvert.DeserializeObject(response);
 
