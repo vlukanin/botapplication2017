@@ -10,8 +10,10 @@
 
     using Utils;
 
+    [Serializable]
     public enum Measurement { Temperature = 1, Humidity = 2, Pressure = 4, Weather = 8, Emotions = 16, None = 0 }
 
+    [Serializable]
     public class WeatherParam
     {
         public DateTime When { get; set; }

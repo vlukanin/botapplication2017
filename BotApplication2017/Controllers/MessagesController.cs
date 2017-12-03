@@ -18,7 +18,7 @@ namespace BotApplication2017
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
+                await Conversation.SendAsync(activity, () => new Dialogs.WeatherDialog());
             }
             else
             {
